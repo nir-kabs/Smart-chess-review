@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Smart Chess Review</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Chess Review</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="gradient">
   <h1>Smart Chess Review</h1>
-  <div id="board"></div>
-  <div>
-    <label for="themeSelect">Choose piece theme:</label>
-    <select id="themeSelect">
-      <option value="classic">Classic</option>
-      <option value="modern">Modern</option>
-    </select>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/chessboardjs@1.0.0/dist/chessboard.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chess.js@0.13.4/chess.min.js"></script>
-  <script src="script.js"></script>
+
+  <label for="backgroundSelect">Choose background:</label>
+  <select id="backgroundSelect">
+    <option value="gradient">Blue Gradient</option>
+    <option value="wood">Wood Texture</option>
+    <option value="dark">Dark Background</option>
+  </select>
+
+  <script>
+    const backgroundSelect = document.getElementById('backgroundSelect');
+
+    backgroundSelect.addEventListener('change', () => {
+      document.body.className = backgroundSelect.value;
+    });
+  </script>
 </body>
 </html>
