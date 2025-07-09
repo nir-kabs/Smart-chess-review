@@ -9,18 +9,41 @@
 <body class="gradient">
   <h1>Smart Chess Review</h1>
 
-  <label for="backgroundSelect">Choose background:</label>
-  <select id="backgroundSelect">
-    <option value="gradient">Blue Gradient</option>
-    <option value="wood">Wood Texture</option>
-    <option value="dark">Dark Background</option>
-  </select>
+  <div>
+    <label for="themeSelect">Choose chessboard theme:</label>
+    <select id="themeSelect">
+      <option value="classic">Classic</option>
+      <option value="modern">Modern</option>
+      <option value="wood">Wood</option>
+    </select>
+  </div>
 
+  <div>
+    <label for="backgroundSelect">Choose background:</label>
+    <select id="backgroundSelect">
+      <option value="gradient">Blue Gradient</option>
+      <option value="wood">Wood Texture</option>
+      <option value="dark">Dark Background</option>
+    </select>
+  </div>
+
+  <div id="chessboard-container">
+    <!-- Здесь будет шахматная доска -->
+  </div>
+
+  <script src="script.js"></script>
   <script>
+    // Background switcher
     const backgroundSelect = document.getElementById('backgroundSelect');
-
     backgroundSelect.addEventListener('change', () => {
       document.body.className = backgroundSelect.value;
+    });
+
+    // Chessboard theme switcher (пример заглушки)
+    const themeSelect = document.getElementById('themeSelect');
+    themeSelect.addEventListener('change', () => {
+      // Здесь будет логика смены темы фигурок
+      console.log('Selected chessboard theme:', themeSelect.value);
     });
   </script>
 </body>
