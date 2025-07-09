@@ -28,7 +28,7 @@
   </div>
 
   <div id="chessboard-container">
-    <!-- Здесь будет шахматная доска -->
+    <!-- Chessboard will be here -->
   </div>
 
   <script src="script.js"></script>
@@ -39,11 +39,11 @@
       document.body.className = backgroundSelect.value;
     });
 
-    // Chessboard theme switcher (пример заглушки)
+    // Chessboard theme switcher (placeholder)
     const themeSelect = document.getElementById('themeSelect');
     themeSelect.addEventListener('change', () => {
-      // Здесь будет логика смены темы фигурок
       console.log('Selected chessboard theme:', themeSelect.value);
+      // TODO: add real theme change logic here
     });
   </script>
 </body>
