@@ -5,33 +5,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Smart Chess Review</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .hidden {
+      display: none;
+    }
+    textarea {
+      width: 90%;
+      height: 100px;
+      margin: 10px auto;
+      display: block;
+    }
+    #boardSetup {
+      width: 400px;
+      margin: 10px auto;
+    }
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+    }
+  </style>
+  <!-- Подключаем chessboard.js -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/1.0.0/chess.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard.min.js"></script>
 </head>
 <body class="light">
   <h1>Smart Chess Review</h1>
 
   <div class="control-group">
-    <label for="themeSelect">Select chessboard theme:</label>
-    <select id="themeSelect">
-      <option value="classic">Classic</option>
-      <option value="modern">Modern</option>
-      <option value="wood">Wood</option>
+    <label for="inputType">Select input type:</label>
+    <select id="inputType">
+      <option value="play">Play moves</option>
+      <option value="pgn">Paste PGN</option>
+      <option value="fen">Paste FEN</option>
+      <option value="setup">Set up position</option>
     </select>
   </div>
 
-  <div class="control-group">
-    <label for="backgroundSelect">Select background style:</label>
-    <select id="backgroundSelect">
-      <option value="light">Light Background</option>
-      <option value="dark">Dark Background</option>
-      <option value="gradient">Blue Gradient</option>
-      <option value="space">Space</option>
-      <option value="sunset">Sunset Gradient</option>
-      <option value="marble">Marble Pattern</option>
-    </select>
+  <div id="playSection">
+    <p style="text-align:center;">Use the chessboard to play moves (будет добавлено позже)</p>
   </div>
 
-  <div id="chessboard-container"></div>
+  <div id="pgnSection" class="hidden">
+    <textarea id="pgnInput" placeholder="Paste PGN here"></textarea>
+  </div>
 
-  <script src="script.js"></script>
+  <div id="fenSection" class="hidden">
+    <textarea id="fenInput" placeholder="Paste FEN here"></textarea>
+  </div>
+
+  <div id="setupSection" class="hidden">
+    <div id="boardSetup"></div>
+  </div>
+
+  <button id="continueButton">Continue</button>
+
+  <script>
+    const inputType = document.getElementById('inputType');
+    const pgnSection = document.getElementById('pgnSection');
+    const fenSection = document.getElementById('fenSection');
+    const playSection = document.getElementById('playSection');
+    const setupSection = document.getElementById('setupSection');
+    const continueButton = document.getElementById('continueButton');
+
+    // Инициализация шахматной доски для "Set up position"
+    const chess = new Chess();
+    const boardSetup = Chessboard('boardSetup', {
+      position: 'start',
+      draggable: true,
+      dropOffBoard: 'trash',
+      sparePieces: true,
+      onChange: (oldPos, newPos) => {
+        // Можно обработать изменения позиции, если надо
+      }
+    });
+
+    function updateSections() {
+      const type = inputType.value;
+      pgnSection.classList.add('hidden');
+      fenSection.classList.add('hidden');
+      playSection.classList.add('hidden');
+      setupSection.classList.add('hidden');
+
+      if (type === 'pgn') pgnSection.classList.remove('hidden');
+      else if (type === 'fen') fenSection.classList.remove('hidden');
+      else if (type === 'play') playSection.classList.remove('hidden');
+      else if (type === 'setup') setupSection.classList.remove('hidden');
+    }
+
+    inputType.addEventListener('change', updateSections);
+
+    updateSections(); // вызвать при загрузке страницы
+
+    continueButton.addEventListener('click', () => {
+      const type = inputType.value;
+
+      if (type === 'pgn') {
+        const pgn = encodeURIComponent(document.getElementById('pgnInput').value.trim());
+        if (!pgn) {
+          alert('Please paste PGN.');
+          return;
+        }
+        window.location.href = review.html?pgn=${pgn};
+      } else if (type === 'fen') {
+        const fen = document.getElementById('fenInput').value.trim();
+        if (!fen) {
+          alert('Please paste FEN.');
+          return;
+        }
+        window.location.href = review.html?fen=${encodeURIComponent(fen)};
+      } else if (type === 'setup') {
+        const fen = boardSetup.fen();
+        window.location.href = review.html?fen=${encodeURIComponent(fen)};
+      } else if (type === 'play') {
+        alert('Play moves feature will be added soon.');
+      }
+    });
+  </script>
 </body>
 </html>
