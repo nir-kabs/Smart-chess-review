@@ -24,6 +24,13 @@
       <option value="gradient">Blue Gradient</option>
       <option value="wood">Wood Texture</option>
       <option value="dark">Dark Background</option>
+      <option value="light">Light Grey</option>
+      <option value="green">Green Fabric</option>
+      <option value="paper">White Paper</option>
+      <option value="space">Space Stars</option>
+      <option value="sunset">Sunset Gradient</option>
+      <option value="glass">Glassy Blue</option>
+      <option value="marble">Marble Pattern</option>
     </select>
   </div>
 
@@ -31,19 +38,17 @@
     <!-- Chessboard will be here -->
   </div>
 
-  <script src="script.js"></script>
   <script>
-    // Background switcher
     const backgroundSelect = document.getElementById('backgroundSelect');
     backgroundSelect.addEventListener('change', () => {
-      document.body.className = backgroundSelect.value;
+      document.body.className = '';
+      document.body.classList.add(backgroundSelect.value);
     });
 
-    // Chessboard theme switcher (placeholder)
     const themeSelect = document.getElementById('themeSelect');
     themeSelect.addEventListener('change', () => {
       console.log('Selected chessboard theme:', themeSelect.value);
-      // TODO: add real theme change logic here
+      // TODO: Implement board theme switching
     });
   </script>
 </body>
