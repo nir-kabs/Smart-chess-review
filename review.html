@@ -64,12 +64,39 @@
 
     const board = Chessboard('board', {
       position: chess.fen(),
-      draggable: false
+      draggable: true,
+      onDrop: (source, target) => {
+        const move = chess.move({ from: source, to: target, promotion: 'q' });
+        if (move === null) return 'snapback';
+        updateStatus();
+      },
+      onSnapEnd: () => {
+        board.position(chess.fen());
+      }
     });
 
-    // Можно добавить дополнительную информацию
-    const infoDiv = document.getElementById('info');
-    infoDiv.textContent = It's ${chess.turn() === 'w' ? 'White' : 'Black'} to move.;
+    function updateStatus() {
+      const infoDiv = document.getElementById('info');
+      let status = It's ${chess.turn() === 'w' ? 'White' : 'Black'} to move.;
+
+      if (chess.in_check()) {
+        status += ` Check!`;
+      }
+      if (chess.game_over()) {
+        if (chess.in_checkmate()) {
+          status = Checkmate! ${chess.turn() === 'w' ? 'Black' : 'White'} wins.;
+        } else if (chess.in_stalemate()) {
+          status = 'Stalemate. Draw.';
+        } else if (chess.in_threefold_repetition()) {
+          status = 'Draw by threefold repetition.';
+        } else if (chess.insufficient_material()) {
+          status = 'Draw by insufficient material.';
+        }
+      }
+      infoDiv.textContent = status;
+    }
+
+    updateStatus();
   </script>
 </body>
 </html>
