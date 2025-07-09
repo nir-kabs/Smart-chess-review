@@ -1,64 +1,41 @@
-body.gradient {
-  background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
-  color: #333;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Chess Review</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Smart Chess Review</h1>
 
-body.wood {
-  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-}
+  <div class="control-group">
+    <label for="themeSelect">Select chessboard theme:</label>
+    <select id="themeSelect">
+      <option value="classic">Classic</option>
+      <option value="modern">Modern</option>
+      <option value="wood">Wood</option>
+    </select>
+  </div>
 
-body.dark {
-  background-color: #222;
-  color: #eee;
-}
+  <div class="control-group">
+    <label for="backgroundSelect">Select background style:</label>
+    <select id="backgroundSelect">
+      <option value="gradient">Blue Gradient</option>
+      <option value="wood">Wood Texture</option>
+      <option value="dark">Dark Background</option>
+      <option value="light">Light Grey</option>
+      <option value="green">Green Field</option>
+      <option value="space">Space Stars</option>
+      <option value="sunset">Sunset Gradient</option>
+      <option value="glass">Glassy Blue</option>
+      <option value="marble">Marble Pattern</option>
+    </select>
+  </div>
 
-body.light {
-  background-color: #f0f0f0;
-  color: #111;
-}
+  <div id="chessboard-container">
+  </div>
 
-body.green {
-  /* «Green field» от Oscar Nord */
-  background: url('https://images.unsplash.com/photos/green-field-v4CwvsIIixk?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-}
-
-body.space {
-  /* «Space Stars» от архивного космоса */
-  background: url('https://images.unsplash.com/photos/1477209721575-11e2ed8318b8?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-}
-
-body.sunset {
-  background: linear-gradient(to right, #f83600 0%, #f9d423 100%);
-  color: #222;
-}
-
-body.glass {
-  /* «Blue glass ceiling» от Fey Marin */
-  background: url('https://images.unsplash.com/photos/blue-glass-ceiling-design-UFp0Y3qfFWM?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-}
-
-body.marble {
-  background: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
-  background-size: cover;
-  color: #222;
-}
-
-label {
-  display: block;
-  margin-top: 15px;
-  font-weight: bold;
-}
-
-select {
-  margin-top: 5px;
-  padding: 5px;
-  font-size: 1rem;
-}
+  <script src="script.js"></script>
+</body>
+</html>
