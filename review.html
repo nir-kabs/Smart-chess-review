@@ -13,28 +13,63 @@
     h1 {
       text-align: center;
     }
+    #info {
+      max-width: 400px;
+      margin: 10px auto;
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 14px;
+      color: #333;
+    }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard.min.css" />
 </head>
 <body class="light">
   <h1>Position Review</h1>
   <div id="board"></div>
+  <div id="info"></div>
 
-  <!-- Chessboard.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/1.0.0/chess.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard.min.css" />
 
   <script>
-    function getFENFromURL() {
+    function getParam(name) {
       const params = new URLSearchParams(window.location.search);
-      return params.get("fen");
+      return params.get(name);
     }
 
-    const fen = getFENFromURL() || "start";
+    const fenParam = getParam('fen');
+    const pgnParam = getParam('pgn');
+
+    const chess = new Chess();
+
+    if (fenParam) {
+      const valid = chess.validate_fen(fenParam);
+      if (valid.valid) {
+        chess.load(fenParam);
+      } else {
+        alert('Invalid FEN string.');
+        chess.reset();
+      }
+    } else if (pgnParam) {
+      try {
+        chess.load_pgn(decodeURIComponent(pgnParam));
+      } catch {
+        alert('Invalid PGN string.');
+        chess.reset();
+      }
+    } else {
+      chess.reset();
+    }
+
     const board = Chessboard('board', {
-      position: fen,
+      position: chess.fen(),
       draggable: false
     });
+
+    // Можно добавить дополнительную информацию
+    const infoDiv = document.getElementById('info');
+    infoDiv.textContent = It's ${chess.turn() === 'w' ? 'White' : 'Black'} to move.;
   </script>
 </body>
 </html>
