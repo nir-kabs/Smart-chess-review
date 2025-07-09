@@ -1,55 +1,39 @@
-body.light {
-  background-color: #f9f9f9;
-  color: #111;
+/* Общие стили для доски */
+#chessboard-container {
+  width: 400px;
+  height: 400px;
+  margin-top: 20px;
+  border: 2px solid #333;
+  box-sizing: border-box;
+  /* Можно добавить ещё стили для доски */
 }
 
-body.dark {
+/* Classic theme */
+#chessboard-container.classic {
+  background-color: beige;
+  background-image: linear-gradient(45deg, #f0d9b5 25%, transparent 25%), 
+                    linear-gradient(-45deg, #f0d9b5 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, #b58863 75%), 
+                    linear-gradient(-45deg, transparent 75%, #b58863 75%);
+  background-size: 50px 50px;
+  background-position: 0 0, 0 25px, 25px -25px, -25px 0px;
+}
+
+/* Modern theme */
+#chessboard-container.modern {
   background-color: #222;
-  color: #eee;
+  background-image: linear-gradient(45deg, #666 25%, transparent 25%), 
+                    linear-gradient(-45deg, #666 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, #999 75%), 
+                    linear-gradient(-45deg, transparent 75%, #999 75%);
+  background-size: 50px 50px;
+  background-position: 0 0, 0 25px, 25px -25px, -25px 0px;
+  border-color: #999;
 }
 
-body.gradient {
-  background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
-  color: #333;
-}
-
-body.wood {
-  background: url('https://images.unsplash.com/photo-1576025129735-676a224bdb17?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
+/* Wood theme */
+#chessboard-container.wood {
+  background: url('https://images.unsplash.com/photo-1576025129735-676a224bdb17?auto=format&fit=crop&w=400&q=80') no-repeat center center;
   background-size: cover;
-  color: #222;
-}
-
-body.green {
-  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-}
-
-body.space {
-  background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-}
-
-body.sunset {
-  background: linear-gradient(to right, #f83600 0%, #f9d423 100%);
-  color: #222;
-}
-
-body.marble {
-  background: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
-  background-size: cover;
-  color: #222;
-}
-
-label {
-  display: block;
-  margin-top: 15px;
-  font-weight: bold;
-}
-
-select {
-  margin-top: 5px;
-  padding: 5px;
-  font-size: 1rem;
+  border-color: #6b4f3f;
 }
