@@ -14,9 +14,9 @@ body.gradient {
 }
 
 body.wood {
-  background: url('https://images.unsplash.com/photo-1616627982103-631a965b49b5?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
+  background: url('https://images.unsplash.com/photo-1576025129735-676a224bdb17?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
   background-size: cover;
-  color: #fff;
+  color: #222;
 }
 
 body.green {
