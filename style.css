@@ -1,29 +1,60 @@
 body.gradient {
   background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
   color: #333;
-  margin: 0;
-  font-family: Arial, sans-serif;
-  padding: 20px;
 }
 
 body.wood {
   background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80') no-repeat center center fixed;
   background-size: cover;
   color: #fff;
-  margin: 0;
-  font-family: Arial, sans-serif;
-  padding: 20px;
 }
 
 body.dark {
   background-color: #222;
   color: #eee;
-  margin: 0;
-  font-family: Arial, sans-serif;
-  padding: 20px;
 }
 
+body.light {
+  background-color: #f0f0f0;
+  color: #111;
+}
 
+body.green {
+  background: url('https://images.unsplash.com/photo-1562183241-b937e95585b0?auto=format&fit=crop&w=800&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+body.paper {
+  background: url('https://images.unsplash.com/photo-1588776814546-3e91c6744d5e?auto=format&fit=crop&w=800&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: #000;
+}
+
+body.space {
+  background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+body.sunset {
+  background: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+  color: #222;
+}
+
+body.glass {
+  background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=800&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+body.marble {
+  background: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=800&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: #222;
+}
+
+/* Optional: styling for dropdowns */
 label {
   display: block;
   margin-top: 15px;
