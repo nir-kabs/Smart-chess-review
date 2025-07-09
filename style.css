@@ -1,10 +1,37 @@
-body {
+body.gradient {
+  background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+  color: #333;
+  margin: 0;
   font-family: Arial, sans-serif;
-  text-align: center;
-  background: #f0f0f0;
   padding: 20px;
 }
-#board {
-  width: 400px;
-  margin: 20px auto;
+
+body.wood {
+  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+body.dark {
+  background-color: #222;
+  color: #eee;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+select {
+  margin-top: 5px;
+  padding: 5px;
+  font-size: 1rem;
 }
